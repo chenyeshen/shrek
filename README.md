@@ -9,9 +9,9 @@ springcloud 全家桶 架构学习中
 # shrek-upms      用户权限管理（未实现）
 
 # 部署执行步骤
-1，下载代码，执行SQL文件
-2，修改shrek-auth的数据链接和REDis配置
-3，分别启动 shrek-service ,shrek-geteway ,shrek-auth
+1，下载代码，执行SQL文件<BR>
+2，修改shrek-auth的数据链接和REDis配置<BR>
+3，分别启动 shrek-service ,shrek-geteway ,shrek-auth<BR>
 
 
 浏览器访问 http://localhost:9999/auth/oauth/token?username=demoUser1&password=123456&grant_type=password&client_id=frontend&client_secret=frontend
