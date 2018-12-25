@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: shrek-auth
+  hikari:
+        connection-test-query: SELECT 1
+        minimum-idle: 1
+        maximum-pool-size: 5
+        pool-name: dbcp1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://127.0.0.1:3306/auth?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

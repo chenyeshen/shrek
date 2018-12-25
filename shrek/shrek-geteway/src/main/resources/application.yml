@@ -1,0 +1,39 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: shrek-gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+      - id: shrek-auth
+        uri: lb://SHREK-AUTH
+        predicates:
+          - Path=/auth/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+#      - id: shrek-codegen
+#        uri: lb://SHREK-CODEGEN
+#        predicates:
+#          - Path=/codegen/**
+#        filters:
+#          - StripPrefix=1
+#          - RequestTime=true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+
