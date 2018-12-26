@@ -1,12 +1,14 @@
-#  shrek-service 注册中心
+# 模块介绍
 
-#  shrek-gateway 网关服务，目前只做了到auth服务的网关
+shrek-service 注册中心
 
-#  shrek-auth     认证服务 ，  标准springsecurityoauth 2.0认证，实现了密码模式认证，
+shrek-gateway 网关服务，目前只做了到auth服务的网关
 
-#  shrek-upms    用户权限管理模块 ，提供用户权限管理功能，目前只提供通过用户返回用户信息的接口
+shrek-auth     认证服务 ，  标准springsecurityoauth 2.0认证，实现了密码模式认证，
 
-#  shrek-codegen   自动生成代码模块 ，功能已实现，模块还需修改
+shrek-upms    用户权限管理模块 ，提供用户权限管理功能，目前只提供通过用户返回用户信息的接口
+
+shrek-codegen   自动生成代码模块 ，功能已实现，模块还需修改
 
 
 
