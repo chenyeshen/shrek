@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.shrek.upms.dao.SysUserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <select id="count" resultType="Integer">
+        SELECT count(0)
+        FROM sys_user obj
+        WHERE obj.delete_status = '1'
+    </select>
+
+
+    <select id="listByPage" resultType="com.alibaba.fastjson.JSONObject">
+        SELECT
+                    obj.user_id userId,                    obj.username username,                    obj.password password,                    obj.salt salt,                    obj.phone phone,                    obj.avatar avatar,                    obj.dept_id deptId,                    obj.create_time createTime,                    obj.update_time updateTime,                    obj.lock_flag lockFlag,                    obj.del_flag delFlag,                    obj.wx_openid wxOpenid,                    obj.qq_openid qqOpenid,                    obj.tenant_id tenantId                FROM sys_user obj
+        WHERE obj.delete_status = '1'
+        ORDER BY obj.id DESC
+        LIMIT #{offSet}, #{pageRow}
+    </select>
+
+    <insert id="insert" parameterType="com.alibaba.fastjson.JSONObject">
+        INSERT INTO sys_user (
+        user_id,         username,         password,         salt,         phone,         avatar,         dept_id,         create_time,         update_time,         lock_flag,         del_flag,         wx_openid,         qq_openid,         tenant_id                 )
+        VALUES
+        (
+                #{userId},                 #{username},                 #{password},                 #{salt},                 #{phone},                 #{avatar},                 #{deptId},                 #{createTime},                 #{updateTime},                 #{lockFlag},                 #{delFlag},                 #{wxOpenid},                 #{qqOpenid},                 #{tenantId}                 );
+    </insert>
+
+    <update id="update" parameterType="com.alibaba.fastjson.JSONObject">
+        UPDATE sys_user
+        SET
+          user_id=#{userId},           username=#{username},           password=#{password},           salt=#{salt},           phone=#{phone},           avatar=#{avatar},           dept_id=#{deptId},           create_time=#{createTime},           update_time=#{updateTime},           lock_flag=#{lockFlag},           del_flag=#{delFlag},           wx_openid=#{wxOpenid},           qq_openid=#{qqOpenid},           tenant_id=#{tenantId}                 WHERE
+        id = #{id};
+    </update>
+
+
+    <update id="delete" parameterType="java.lang.Long">
+        update
+        sys_user set delete_status=2
+        where
+        id = #{id}
+    </update>
+
+
+    <resultMap id="userMap" type="com.demo.shrek.upms.util.model.One2Many">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="avatar" property="avatar"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="phone" property="phone"/>
+        <collection property="roleList" ofType="com.demo.shrek.upms.util.model.One2Many">
+            <id column="role_id" property="roleId"/>
+            <result column="role_name" property="roleName"/>
+            <result column="role_code" property="roleCode"/>
+            <result column="role_desc" property="roleDesc"/>
+        </collection>
+    </resultMap>
+
+    <sql id="userRoleSql">
+        `user`.user_id,
+        `user`.username,
+        `user`.`password`,
+        `user`.salt,
+        `user`.phone,
+        `user`.avatar,
+        r.role_id,
+        r.role_name,
+        r.role_code,
+        r.role_desc
+    </sql>
+
+    <select id="getByUserName" resultMap="userMap">
+        SELECT
+        <include refid="userRoleSql"/>
+        FROM
+        sys_user AS `user`
+        LEFT JOIN sys_user_role AS ur ON ur.user_id = `user`.user_id
+        LEFT JOIN sys_role AS r ON r.role_id = ur.role_id
+        WHERE `user`.username = #{userName};
+    </select>
+</mapper>

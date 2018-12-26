@@ -14,7 +14,6 @@ import java.util.Set;
  * 如果这里不定义，那么嵌套返回结果里就只能返回一对一的结果，而不是一对多的
  * <p>
  * 对MyBatis源码有研究的同学看DefaultResultSetHandler.instantiateCollectionPropertyIfAppropriate()就明白了
- * @date: 2017/10/24 10:17
  */
 public class One2Many extends JSONObject {
     private Set<String> roleList;

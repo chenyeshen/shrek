@@ -12,6 +12,7 @@
     <module>shrek-geteway</module>
     <module>shrek-auth</module>
     <module>shrek-upms</module>
+    <module>shrek-codegen</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -26,7 +27,13 @@
     <activiti.version>5.22.0</activiti.version>
     <spring-cloud.version>Finchley.SR2</spring-cloud.version>
     <mysql.connector.version>8.0.13</mysql.connector.version>
+    <commons.lang.version>2.6</commons.lang.version>
+    <commons.io.version>2.5</commons.io.version>
+    <commons.configuration.version>1.10</commons.configuration.version>
+    <velocity.version>1.7</velocity.version>
+    <hutool.version>4.3.0</hutool.version>
   </properties>
+
 
 
   <dependencies>
@@ -55,6 +62,15 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!--Lombok-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+
   </dependencies>
 
   <dependencyManagement>

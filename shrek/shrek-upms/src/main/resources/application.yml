@@ -23,3 +23,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
+
+mybatis:
+   mapperLocations: classpath:/mapper/*.xml
+
+logging:
+  level:
+    com.demo.shrek.upms: debug
