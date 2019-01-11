@@ -2,6 +2,7 @@ package com.demo.shrek.upms.controller;
 
 import com.demo.shrek.upms.service.SysUserService;
 import com.demo.shrek.upms.util.CommonUtil;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
 
@@ -40,6 +41,13 @@ public class SysUserController {
 
     @GetMapping("/info/{username}")
     public JSONObject info(@PathVariable String username) {
+        System.out.println( SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         return sysUserService.info(username);
+    }
+
+    @GetMapping("/getInfo")
+    public JSONObject getInfo() {
+        System.out.println( SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+        return sysUserService.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
     }
 }
