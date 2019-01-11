@@ -18,6 +18,13 @@ spring:
         filters:
           - StripPrefix=1
           - RequestTime=true
+      - id: shrek-upms
+        uri: lb://SHREK-UPMS
+        predicates:
+          - Path=/upms/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
 #      - id: shrek-codegen
 #        uri: lb://SHREK-CODEGEN
 #        predicates:
@@ -25,6 +32,12 @@ spring:
 #        filters:
 #          - StripPrefix=1
 #          - RequestTime=true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 eureka:
   client:

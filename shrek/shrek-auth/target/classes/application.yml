@@ -19,6 +19,18 @@ spring:
     password:
     port: 6379
 
+security:
+  oauth2:
+    client:
+      client-id: pig
+      client-secret: pig
+      user-authorization-uri: http://localhost:3000/oauth/authorize
+      access-token-uri: http://localhost:3000/oauth/token
+      scope: server
+    resource:
+      loadBalanced: true
+      token-info-uri: http://localhost:3000/oauth/check_token
+
 eureka:
   client:
     serviceUrl:

@@ -39,4 +39,13 @@ public class SysGeneratorController {
 		IOUtils.write(data, response.getOutputStream());
 
 	}
+
+
+	/**
+	 * 生成代码
+	 */
+	@GetMapping("/test")
+	public void test(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Test---------------");
+	}
 }

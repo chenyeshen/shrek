@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController
 @EnableEurekaClient
 @EnableFeignClients
 public class ShrekAuthApplication {
@@ -17,8 +16,4 @@ public class ShrekAuthApplication {
         SpringApplication.run( ShrekAuthApplication.class, args );
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello spring security";
-    }
 }

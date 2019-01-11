@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -17,7 +18,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import javax.sql.DataSource;
 
@@ -29,15 +29,18 @@ public class MyAuthorzationServerConfig extends AuthorizationServerConfigurerAda
 
     private final RedisConnectionFactory redisConnectionFactory;
 
+    private final UserDetailsService userDetailsService;
+
     /**
      * 注入authenticationManager
      * 来支持 password grant type
      */
     private final AuthenticationManager authenticationManager;
 
-    public MyAuthorzationServerConfig(HikariDataSource dataSource, RedisConnectionFactory redisConnectionFactory, AuthenticationManager authenticationManager) {
+    public MyAuthorzationServerConfig(HikariDataSource dataSource, RedisConnectionFactory redisConnectionFactory, UserDetailsService userDetailsService, AuthenticationManager authenticationManager) {
         this.dataSource = dataSource;
         this.redisConnectionFactory = redisConnectionFactory;
+        this.userDetailsService = userDetailsService;
         this.authenticationManager = authenticationManager;
     }
 
@@ -58,7 +61,8 @@ public class MyAuthorzationServerConfig extends AuthorizationServerConfigurerAda
         endpoints.authenticationManager(authenticationManager)
                 //允许 GET、POST 请求获取 token，即访问端点：oauth/token
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
-                .tokenStore(tokenStore(this.redisConnectionFactory));
+                .tokenStore(tokenStore(this.redisConnectionFactory))
+                .userDetailsService(this.userDetailsService);
     }
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
