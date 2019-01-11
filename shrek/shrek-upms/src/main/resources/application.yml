@@ -19,6 +19,30 @@ spring:
     password:
     port: 6379
 
+### spring security 配置
+#security:
+#  oauth2:
+#    client:
+#      # 默认放行url,子模块重写时application-dev.yml中的公共配置会被覆盖,所以要把公共配置中的放行url再写一次
+#      ignore-urls:
+#        - '/actuator/**'
+#        - '/v2/api-docs'
+#        - '/sysUser/info/*'
+#        - '/social/info/*'
+#        - '/mobile/*'
+#        - '/log/save'
+
+security:
+  oauth2:
+    client:
+      client-id: frontend
+      client-secret: frontend
+      user-authorization-uri: http://localhost:9000/oauth/authorize
+      access-token-uri: http://localhost:9000/oauth/token
+    resource:
+      token-info-uri: http://localhost:9000/oauth/check_token
+
+
 eureka:
   client:
     serviceUrl:
