@@ -1,3 +1,7 @@
+# 增加了前端模块，前端是VUE  基础vue-admin-template 改造
+实现了用户的登陆，获取用户信息，用户退出功能。
+https://github.com/wushu0725/shrek-ui
+
 # 模块介绍
 
 shrek-service 注册中心
