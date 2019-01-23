@@ -1,4 +1,4 @@
-package com.demo.shrek.upms.util.model;
+package com.demo.core.util.model;
 
 import com.alibaba.fastjson.JSONObject;
 

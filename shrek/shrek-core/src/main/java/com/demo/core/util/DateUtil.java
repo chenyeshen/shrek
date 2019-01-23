@@ -1,4 +1,4 @@
-package com.demo.shrek.upms.util;
+package com.demo.core.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,8 +1,8 @@
-package com.demo.shrek.upms.exception;
+package com.demo.core.exception;
 
 import com.alibaba.fastjson.JSONObject;
-import com.demo.shrek.upms.util.CommonUtil;
-import com.demo.shrek.upms.util.constants.ErrorEnum;
+import com.demo.core.util.CommonUtil;
+import com.demo.core.util.constants.ErrorEnum;
 
 /**
  * @author: hxy

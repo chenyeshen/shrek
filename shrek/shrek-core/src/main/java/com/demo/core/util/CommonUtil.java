@@ -1,9 +1,9 @@
-package com.demo.shrek.upms.util;
+package com.demo.core.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.demo.shrek.upms.exception.CommonJsonException;
-import com.demo.shrek.upms.util.constants.Constants;
-import com.demo.shrek.upms.util.constants.ErrorEnum;
+import com.demo.core.exception.CommonJsonException;
+import com.demo.core.util.constants.Constants;
+import com.demo.core.util.constants.ErrorEnum;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;

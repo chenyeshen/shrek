@@ -1,4 +1,4 @@
-package com.demo.shrek.upms.util.constants;
+package com.demo.core.util.constants;
 
 /**
  * @author: hxy

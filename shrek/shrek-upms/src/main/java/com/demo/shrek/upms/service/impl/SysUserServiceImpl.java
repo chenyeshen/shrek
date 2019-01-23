@@ -1,13 +1,13 @@
 package com.demo.shrek.upms.service.impl;
 
 
+import com.demo.core.util.CommonUtil;
 import com.demo.shrek.upms.dao.SysUserDao;
 import com.alibaba.fastjson.JSONObject;
 
 import com.demo.shrek.upms.service.SysUserService;
 import java.util.List;
 
-import com.demo.shrek.upms.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

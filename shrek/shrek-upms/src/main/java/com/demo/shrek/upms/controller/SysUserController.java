@@ -1,7 +1,7 @@
 package com.demo.shrek.upms.controller;
 
+import com.demo.core.util.CommonUtil;
 import com.demo.shrek.upms.service.SysUserService;
-import com.demo.shrek.upms.util.CommonUtil;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
